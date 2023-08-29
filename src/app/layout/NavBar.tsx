@@ -7,11 +7,11 @@ export default function NavBar() {
             <Container>
                 <Menu.Item header>
                     <img src="/assets/logo.png" alt="logo" style={{marginRight: '10px'}}/>
-                    Reactivities
+                    Outdoor Competition Database
                 </Menu.Item>
-                <Menu.Item name='Activities' />
+                <Menu.Item name='Competitions' />
                 <Menu.Item>
-                    <Button positive content='Create Activity' />
+                    <Button positive content='Create Competition' />
                 </Menu.Item>
             </Container>
         </Menu>
