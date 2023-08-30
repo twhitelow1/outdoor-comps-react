@@ -6,6 +6,7 @@ import {  Container } from 'semantic-ui-react'; // UI components from Semantic U
 import { Activity } from '../models/activity'; // Activity model for type definitions.
 import NavBar from './NavBar'; // Navigation bar component.
 import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard'; // Activity dashboard component
+import {v4 as uuid} from 'uuid'; // For generating unique IDs.
 
 // Main App component.
 function App() {
@@ -51,7 +52,7 @@ function App() {
   function handleCreateorEditActivity(activity: Activity) {
     activity.id 
     ? setActivities([...activities.filter(x => x.id !== activity.id), activity]) 
-    : setActivities([...activities, activity]);
+    : setActivities([...activities, {...activity, id: uuid()}]);
     setEditMode(false);
     setSelectedActivity(activity);
   }
