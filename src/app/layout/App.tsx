@@ -57,6 +57,10 @@ function App() {
     setSelectedActivity(activity);
   }
 
+  function handleDeleteActivity(id: string) {
+    setActivities([...activities.filter(x => x.id !== id)]);
+  }
+
   // Component's render logic.
   return (
     <Fragment>
@@ -71,6 +75,7 @@ function App() {
         openForm={handleFormOpen} // Pass the handleFormOpen function to the ActivityDashboard component.
         closeForm={handleFormClose} // Pass the handleFormClose function to the ActivityDashboard component.
         createOrEdit={handleCreateorEditActivity} // Pass the handleCreateorEditActivity function to the ActivityDashboard component.
+        deleteActivity={handleDeleteActivity}
       />
      </Container>
     
