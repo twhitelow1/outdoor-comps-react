@@ -2,7 +2,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import './styles.css';
 import axios from 'axios'; // For making HTTP requests.
-import { Header, List, Button, Container } from 'semantic-ui-react'; // UI components from Semantic UI.
+import {  Container } from 'semantic-ui-react'; // UI components from Semantic UI.
 import { Activity } from '../models/activity'; // Activity model for type definitions.
 import NavBar from './NavBar'; // Navigation bar component.
 import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard'; // Activity dashboard component
@@ -48,6 +48,14 @@ function App() {
     setEditMode(false);
   }
 
+  function handleCreateorEditActivity(activity: Activity) {
+    activity.id 
+    ? setActivities([...activities.filter(x => x.id !== activity.id), activity]) 
+    : setActivities([...activities, activity]);
+    setEditMode(false);
+    setSelectedActivity(activity);
+  }
+
   // Component's render logic.
   return (
     <Fragment>
@@ -61,6 +69,7 @@ function App() {
         editMode={editMode} // Pass the editMode state to the ActivityDashboard component.
         openForm={handleFormOpen} // Pass the handleFormOpen function to the ActivityDashboard component.
         closeForm={handleFormClose} // Pass the handleFormClose function to the ActivityDashboard component.
+        createOrEdit={handleCreateorEditActivity} // Pass the handleCreateorEditActivity function to the ActivityDashboard component.
       />
      </Container>
     
